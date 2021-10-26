@@ -23,12 +23,13 @@ public class calc{
         }
     }
 
-//  Converts the string to a List pf type String
+//  Converts the string to a List of type String
     public static List<String> toList(String in){
         List<String> out = new ArrayList<String>();
         int i = 0;
         int p;
-        List<String> wordBank = List.of("SIN", "COS", "TAN");
+        List<String> wordBank = List.of("SIN", "COS", "TAN" , "COT", "ARCSIN", 
+                                        "ARCCOS", "ARCTAN", "ARCCTG", "LN", "LOG");
         while (i < in.length()) {
             if (in.charAt(i)==' '){
                 i++;
@@ -156,6 +157,83 @@ public class calc{
         else if(in.get(in.size()-2).equals("TAN"))  {
             if (in.size()==2) {
                 return Math.tan(Double.parseDouble(in.get(in.size()-1)));
+            }
+            else{
+                in.add( in.size()-2, String.valueOf(mult(in.subList(in.size()-2, in.size()))) );
+                in.remove(in.size()-1);
+                in.remove(in.size()-1);
+                return mult(in);
+            }
+        }
+        else if(in.get(in.size()-2).equals("COT"))  {
+            if (in.size()==2) {
+                return 1.0/Math.tan(Double.parseDouble(in.get(in.size()-1)));
+            }
+            else{
+                in.add( in.size()-2, String.valueOf(mult(in.subList(in.size()-2, in.size()))) );
+                in.remove(in.size()-1);
+                in.remove(in.size()-1);
+                return mult(in);
+            }
+        }
+        else if(in.get(in.size()-2).equals("LN"))  {
+            if (in.size()==2) {
+                return Math.log(Double.parseDouble(in.get(in.size()-1)));
+            }
+            else{
+                in.add( in.size()-2, String.valueOf(mult(in.subList(in.size()-2, in.size()))) );
+                in.remove(in.size()-1);
+                in.remove(in.size()-1);
+                return mult(in);
+            }
+        }
+        else if(in.get(in.size()-2).equals("LOG"))  {
+            if (in.size()==2) {
+                return 1.0/Math.log10(Double.parseDouble(in.get(in.size()-1)));
+            }
+            else{
+                in.add( in.size()-2, String.valueOf(mult(in.subList(in.size()-2, in.size()))) );
+                in.remove(in.size()-1);
+                in.remove(in.size()-1);
+                return mult(in);
+            }
+        }
+        else if(in.get(in.size()-2).equals("ARCSIN"))  {
+            if (in.size()==2) {
+               return Math.asin(Double.parseDouble(in.get(in.size()-1)));
+            }
+            else{
+                in.add( in.size()-2, String.valueOf(mult(in.subList(in.size()-2, in.size()))) );
+                in.remove(in.size()-1);
+                in.remove(in.size()-1);
+                return mult(in);
+            }
+        }
+        else if(in.get(in.size()-2).equals("ARCCOS"))  {
+            if (in.size()==2) {
+               return Math.acos(Double.parseDouble(in.get(in.size()-1)));
+            }
+            else{
+                in.add( in.size()-2, String.valueOf(mult(in.subList(in.size()-2, in.size()))) );
+                in.remove(in.size()-1);
+                in.remove(in.size()-1);
+                return mult(in);
+            }
+        }
+        else if(in.get(in.size()-2).equals("ARCTAN"))  {
+            if (in.size()==2) {
+               return Math.atan(Double.parseDouble(in.get(in.size()-1)));
+            }
+            else{
+                in.add( in.size()-2, String.valueOf(mult(in.subList(in.size()-2, in.size()))) );
+                in.remove(in.size()-1);
+                in.remove(in.size()-1);
+                return mult(in);
+            }
+        }
+        else if(in.get(in.size()-2).equals("ARCCTG"))  {
+            if (in.size()==2) {
+               return 1/Math.atan(Double.parseDouble(in.get(in.size()-1)));
             }
             else{
                 in.add( in.size()-2, String.valueOf(mult(in.subList(in.size()-2, in.size()))) );
