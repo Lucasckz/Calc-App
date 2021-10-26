@@ -1,4 +1,5 @@
 
+import java.io.IOException;
 import java.util.*;
 
 public class calc{
@@ -16,6 +17,9 @@ public class calc{
             Double solution;
             List<String> toke = toList(input);
             solution = solve(toke);
+
+            if ( solution.isInfinite() ) {throw new IOException();}
+
             System.out.println("Solution:  " + solution);
         }
         catch(Exception e){
