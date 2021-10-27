@@ -64,6 +64,9 @@ public class calc{
                 out.add("-1");
                 i++;
             }
+            else if (in.charAt(i)=='=' && i == in.length()-1) {
+                i++;
+            }
             else {
                 out.add(in.substring(i, i+1));
                 i++;
